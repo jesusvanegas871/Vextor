@@ -1,9 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Register from '../pages/Register/Register';
-
-// Placeholder components for future pages
-const Login = () => <div className="flex items-center justify-center min-h-screen text-v-white">Login Page (Placeholder)</div>;
-const Dashboard = () => <div className="flex items-center justify-center min-h-screen text-v-white">Dashboard Page (Placeholder)</div>;
+import Login from '../pages/Login/Login';
+import Dashboard from '../pages/Dashboard/Dashboard';
 
 const AppRouter = () => {
   return (
@@ -14,10 +12,10 @@ const AppRouter = () => {
         <Route path="/dashboard" element={<Dashboard />} />
 
         {/* Default route */}
-        <Route path="/" element={<Navigate to="/register" replace />} />
+        <Route path="/" element={<Navigate to="/login" replace />} />
 
         {/* Fallback route */}
-        <Route path="*" element={<Navigate to="/register" replace />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
   );

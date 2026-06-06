@@ -1,36 +1,35 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  User,
   Mail,
   Lock,
   Eye,
   EyeOff,
   ArrowRight,
-  ShieldCheck,
   Truck,
   Activity,
-  BarChart3
+  BarChart3,
+  ShieldCheck
 } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import { Logo } from '../../components/ui/Logo';
+import { Checkbox } from '../../components/ui/Checkbox';
 
-const Register = () => {
+const Login = () => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    fullName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    rememberMe: false
   });
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.fullName) newErrors.fullName = 'El nombre es obligatorio';
     if (!formData.email) {
       newErrors.email = 'El correo es obligatorio';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -38,11 +37,6 @@ const Register = () => {
     }
     if (!formData.password) {
       newErrors.password = 'La contraseña es obligatoria';
-    } else if (formData.password.length < 8) {
-      newErrors.password = 'Mínimo 8 caracteres';
-    }
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Las contraseñas no coinciden';
     }
     return newErrors;
   };
@@ -61,13 +55,16 @@ const Register = () => {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      alert('Registro exitoso (Simulado)');
-    }, 2000);
+      navigate('/dashboard');
+    }, 1500);
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -101,8 +98,8 @@ const Register = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-5xl font-bold text-v-white leading-tight mb-6"
           >
-            Optimiza tu flota con <br />
-            <span className="text-primary">inteligencia operativa</span>
+            Bienvenido de nuevo a <br />
+            <span className="text-primary">Vextor Fleet</span>
           </motion.h1>
 
           <div className="space-y-6">
@@ -135,7 +132,7 @@ const Register = () => {
         </motion.p>
       </div>
 
-      {/* Right Side - Registration Form */}
+      {/* Right Side - Login Form */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-6 sm:p-12 bg-v-dark-soft lg:rounded-l-[40px] shadow-[-20px_0_40px_rgba(0,0,0,0.5)] border-l border-white/5">
         <div className="w-full max-w-md space-y-8">
           <div className="lg:hidden mb-8 flex justify-center">
@@ -143,9 +140,9 @@ const Register = () => {
           </div>
 
           <div className="space-y-2 text-center lg:text-left">
-            <h2 className="text-3xl font-bold text-v-white tracking-tight">Crear cuenta</h2>
+            <h2 className="text-3xl font-bold text-v-white tracking-tight">Iniciar sesión</h2>
             <p className="text-v-gray">
-              Empieza a gestionar tu flota de manera profesional hoy mismo.
+              Ingresa tus credenciales para acceder a tu panel de control.
             </p>
           </div>
 
@@ -154,22 +151,6 @@ const Register = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-            >
-              <Input
-                label="Nombre completo"
-                name="fullName"
-                placeholder="Juan Pérez"
-                icon={User}
-                value={formData.fullName}
-                onChange={handleChange}
-                error={errors.fullName}
-              />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
             >
               <Input
                 label="Correo electrónico"
@@ -186,7 +167,7 @@ const Register = () => {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.2 }}
             >
               <Input
                 label="Contraseña"
@@ -214,24 +195,24 @@ const Register = () => {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.3 }}
+              className="flex items-center justify-between"
             >
-              <Input
-                label="Confirmar contraseña"
-                name="confirmPassword"
-                type={showPassword ? "text" : "password"}
-                placeholder="••••••••"
-                icon={ShieldCheck}
-                value={formData.confirmPassword}
+              <Checkbox
+                label="Recordarme"
+                name="rememberMe"
+                checked={formData.rememberMe}
                 onChange={handleChange}
-                error={errors.confirmPassword}
               />
+              <Link to="/forgot-password" size="sm" className="text-sm font-medium text-primary hover:underline">
+                ¿Olvidaste tu contraseña?
+              </Link>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.4 }}
               className="pt-2"
             >
               <Button
@@ -239,7 +220,7 @@ const Register = () => {
                 className="w-full"
                 isLoading={isLoading}
               >
-                Crear cuenta <ArrowRight size={18} className="ml-2" />
+                Iniciar sesión <ArrowRight size={18} className="ml-2" />
               </Button>
             </motion.div>
           </form>
@@ -247,12 +228,12 @@ const Register = () => {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.5 }}
             className="text-center text-sm text-v-gray"
           >
-            ¿Ya tienes una cuenta?{' '}
-            <Link to="/login" className="text-primary hover:underline font-medium">
-              Inicia sesión
+            ¿No tienes una cuenta?{' '}
+            <Link to="/register" className="text-primary hover:underline font-medium">
+              Regístrate gratis
             </Link>
           </motion.p>
         </div>
@@ -261,4 +242,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

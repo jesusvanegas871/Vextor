@@ -1,7 +1,7 @@
 import React, { useId } from 'react';
 import { cn } from '../../utils/cn';
 
-const Input = React.forwardRef(({ className, type, label, error, icon: Icon, ...props }, ref) => {
+const Input = React.forwardRef(({ className, type, label, error, icon: Icon, rightElement, ...props }, ref) => {
   const id = useId();
   return (
     <div className="w-full space-y-1.5">
@@ -25,12 +25,18 @@ const Input = React.forwardRef(({ className, type, label, error, icon: Icon, ...
           className={cn(
             'flex h-11 w-full rounded-lg border border-v-gray-dark bg-v-dark-soft px-3 py-2 text-sm text-v-white ring-offset-v-dark file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-v-gray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50',
             Icon && 'pl-10',
+            rightElement && 'pr-10',
             error && 'border-red-500 focus-visible:ring-red-500/20 focus-visible:border-red-500',
             className
           )}
           ref={ref}
           {...props}
         />
+        {rightElement && (
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center">
+            {rightElement}
+          </div>
+        )}
       </div>
       {error && (
         <p className="text-xs font-medium text-red-500 animate-in fade-in slide-in-from-top-1">
