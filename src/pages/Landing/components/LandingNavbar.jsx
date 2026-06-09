@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Rocket } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
+import { Logo } from '../../../components/ui/Logo';
 
 const LandingNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,11 +34,8 @@ const LandingNavbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="bg-primary p-2 rounded-xl group-hover:rotate-12 transition-transform duration-300">
-            <Rocket className="text-v-dark w-5 h-5" />
-          </div>
-          <span className="text-2xl font-bold text-v-white tracking-tight">Vextor</span>
+        <Link to="/" className="flex items-center group">
+          <Logo size="sm" className="group-hover:scale-105 transition-transform duration-300" />
         </Link>
 
         {/* Desktop Navigation */}

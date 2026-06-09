@@ -1,4 +1,5 @@
-import { Rocket, Mail, Phone, MapPin, Globe, Share2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe, Share2 } from 'lucide-react';
+import { Logo } from '../../../components/ui/Logo';
 
 const LandingFooter = () => {
   const currentYear = new Date().getFullYear();
@@ -9,11 +10,8 @@ const LandingFooter = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           {/* Brand Info */}
           <div className="col-span-1 lg:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="bg-primary p-2 rounded-xl">
-                <Rocket className="text-v-dark w-5 h-5" />
-              </div>
-              <span className="text-2xl font-bold text-v-white tracking-tight">Vextor</span>
+            <div className="mb-6">
+              <Logo size="sm" />
             </div>
             <p className="text-v-gray mb-8 leading-relaxed">
               La plataforma líder en gestión operativa para empresas de transporte especial. Digitalización, control y eficiencia en una sola solución.

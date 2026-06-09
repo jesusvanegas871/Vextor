@@ -63,8 +63,11 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobileOpen, setIsMobileOpen })
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="h-20 flex items-center justify-between px-6 border-b border-v-dark-border">
-            <div className={cn("flex items-center gap-3 overflow-hidden transition-all duration-300", isCollapsed && !isMobileOpen ? "opacity-0 w-0" : "opacity-100 w-auto")}>
-              <Logo size="sm" />
+            <div className={cn("flex items-center overflow-hidden transition-all duration-300", isCollapsed && !isMobileOpen ? "w-10" : "w-auto")}>
+              <Logo
+                variant={isCollapsed && !isMobileOpen ? "iso" : "full"}
+                size="sm"
+              />
             </div>
 
             <button
