@@ -10,6 +10,18 @@ import {
   Smartphone
 } from 'lucide-react';
 
+/**
+ * FeaturesSection Component
+ *
+ * Responsabilidad:
+ * Mostrar las funcionalidades clave de la plataforma Vextor.
+ *
+ * Funcionalidades:
+ * * Cuadrícula de características con iconos y descripciones.
+ * * Efectos de hover para resaltar capacidades técnicas.
+ * * Panel de previsualización de interfaz para demostrar UX/UI.
+ * * Listado de beneficios específicos de usabilidad.
+ */
 const features = [
   {
     title: "Gestión de Vehículos",

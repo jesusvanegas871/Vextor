@@ -8,6 +8,18 @@ import {
   ArrowRight
 } from 'lucide-react';
 
+/**
+ * ProblemSection Component
+ *
+ * Responsabilidad:
+ * Sección de agitación de problemas (Problem/Agitation) para la Landing Page.
+ *
+ * Funcionalidades:
+ * * Listado de puntos de dolor comunes en la gestión de flotas manual.
+ * * Tarjetas interactivas con iconos representativos.
+ * * Llamada a la acción destacada (Digitalización).
+ * * Contraste visual fuerte para resaltar la necesidad de cambio.
+ */
 const problems = [
   {
     title: "Uso excesivo de papel",

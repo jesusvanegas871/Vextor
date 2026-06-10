@@ -2,6 +2,20 @@ import React, { useId } from 'react';
 import { cn } from '../../utils/cn';
 import { Check } from 'lucide-react';
 
+/**
+ * Checkbox Component
+ *
+ * Responsabilidad:
+ * Permitir al usuario seleccionar opciones booleanas (activado/desactivado).
+ *
+ * Utilizado en:
+ * * Login page (Recordarme)
+ *
+ * Funcionalidades:
+ * * Input personalizado con estilos de la marca.
+ * * Soporta etiqueta (label) vinculada por ID único.
+ * * Animaciones de transición para el estado checked.
+ */
 const Checkbox = React.forwardRef(({ className, label, ...props }, ref) => {
   const id = useId();
   return (

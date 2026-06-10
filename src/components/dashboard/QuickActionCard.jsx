@@ -1,6 +1,20 @@
 import { PlusCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+/**
+ * QuickActionCard Component
+ *
+ * Responsabilidad:
+ * Proporcionar un acceso rápido a funciones operativas del sistema.
+ *
+ * Utilizado en:
+ * * Dashboard
+ *
+ * Funcionalidades:
+ * * Botón interactivo con hover effects.
+ * * Soporta iconos de Lucide.
+ * * Animación de entrada con motion.
+ */
 const QuickActionCard = ({ title, description, icon: Icon, onClick, delay = 0 }) => {
   return (
     <motion.button

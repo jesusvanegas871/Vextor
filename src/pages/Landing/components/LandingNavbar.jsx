@@ -5,6 +5,19 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 import { Logo } from '../../../components/ui/Logo';
 
+/**
+ * LandingNavbar Component
+ *
+ * Responsabilidad:
+ * Barra de navegación superior para la página de aterrizaje (Landing Page).
+ *
+ * Funcionalidades:
+ * * Logo con enlace a inicio.
+ * * Enlaces de navegación suaves (anchors).
+ * * Cambio de estilo (transparente a oscuro) al hacer scroll.
+ * * Menú móvil desplegable.
+ * * Llamadas a la acción (Login / Register).
+ */
 const LandingNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

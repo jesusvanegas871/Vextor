@@ -15,7 +15,24 @@ import {
 } from 'lucide-react';
 import { Logo } from '../ui/Logo';
 import { cn } from '../../utils/cn';
+import { useAuth } from '../../context/AuthContext';
 
+/**
+ * Sidebar Component
+ *
+ * Responsabilidad:
+ * Navegación lateral principal de la aplicación operativa.
+ *
+ * Utilizado en:
+ * * DashboardLayout
+ *
+ * Funcionalidades:
+ * * Navegación mediante NavLink de React Router.
+ * * Soporte para modo colapsado/expandido.
+ * * Menú lateral móvil con overlay.
+ * * Manejo de marca (Logo/Isotipo) según estado.
+ * * Indicador visual de ruta activa.
+ */
 const menuItems = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { path: '/vehicles', icon: Truck, label: 'Vehículos' },
@@ -27,6 +44,7 @@ const menuItems = [
 ];
 
 const Sidebar = ({ isCollapsed, setIsCollapsed, isMobileOpen, setIsMobileOpen }) => {
+  const { logout } = useAuth();
   const location = useLocation();
 
   const sidebarVariants = {
@@ -119,10 +137,13 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobileOpen, setIsMobileOpen })
 
           {/* Footer */}
           <div className="p-4 border-t border-v-dark-border">
-            <button className={cn(
-              "flex items-center gap-3 w-full px-3 py-3 rounded-xl text-red-400 hover:bg-red-500/10 transition-all duration-200",
-              isCollapsed && !isMobileOpen ? "justify-center" : ""
-            )}>
+            <button
+              onClick={logout}
+              className={cn(
+                "flex items-center gap-3 w-full px-3 py-3 rounded-xl text-red-400 hover:bg-red-500/10 transition-all duration-200",
+                isCollapsed && !isMobileOpen ? "justify-center" : ""
+              )}
+            >
               <LogOut size={22} className="shrink-0" />
               {(!isCollapsed || isMobileOpen) && <span className="font-medium">Cerrar Sesión</span>}
             </button>

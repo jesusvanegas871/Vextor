@@ -2,6 +2,19 @@ import { motion } from 'framer-motion';
 import { ChevronRight, Play } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 
+/**
+ * HeroSection Component
+ *
+ * Responsabilidad:
+ * Sección principal de impacto visual (Hero) para la Landing Page.
+ *
+ * Funcionalidades:
+ * * Titular principal con propuesta de valor.
+ * * Llamadas a la acción (CTA) primarias y secundarias.
+ * * Mockup visual de la plataforma con elementos flotantes animados.
+ * * Prueba social (social proof) mediante avatares de usuarios.
+ * * Animaciones de entrada coordinadas con Framer Motion.
+ */
 const HeroSection = () => {
   return (
     <section id="inicio" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">

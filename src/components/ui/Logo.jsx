@@ -2,6 +2,23 @@ import { cn } from '../../utils/cn';
 import logoFull from '../../assets/brand/logo-full.png';
 import isotipo from '../../assets/brand/isotipo.png';
 
+/**
+ * Logo Component
+ *
+ * Responsabilidad:
+ * Renderizar la identidad visual oficial de Vextor de forma consistente.
+ *
+ * Utilizado en:
+ * * LandingNavbar
+ * * LandingFooter
+ * * Login / Register pages
+ * * Sidebar (Modo colapsado y expandido)
+ *
+ * Funcionalidades:
+ * * Variantes: 'full' (Logo completo) e 'iso' (Isotipo solo).
+ * * Tamaños: 'sm', 'md', 'lg'.
+ * * Centraliza la ruta de los assets de marca.
+ */
 const Logo = ({ className, variant = 'full', size = 'md' }) => {
   const sizes = {
     sm: variant === 'iso' ? 'h-8 w-8' : 'h-8',

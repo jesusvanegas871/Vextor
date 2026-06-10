@@ -16,8 +16,26 @@ import {
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import { Logo } from '../../components/ui/Logo';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
+/**
+ * Register Page
+ *
+ * Responsabilidad:
+ * Permitir el alta de nuevos usuarios en la plataforma Vextor.
+ *
+ * Funcionalidades:
+ * * Formulario de registro completo (Nombre, Email, Password, Confirmación).
+ * * Validación de coincidencia de contraseñas.
+ * * Validación de formato de correo y longitud de contraseña.
+ * * Toggle global para visibilidad de contraseñas.
+ * * Diseño profesional con propuesta de valor integrada (Branding).
+ * * Microinteracciones y estados de carga.
+ */
 const Register = () => {
+  const navigate = useNavigate();
+  const { register } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -58,11 +76,18 @@ const Register = () => {
     setErrors({});
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      await register({
+        fullName: formData.fullName,
+        email: formData.email,
+        password: formData.password
+      });
+      navigate('/dashboard');
+    } catch {
+      setErrors({ form: 'Error al crear la cuenta.' });
+    } finally {
       setIsLoading(false);
-      alert('Registro exitoso (Simulado)');
-    }, 2000);
+    }
   };
 
   const handleChange = (e) => {

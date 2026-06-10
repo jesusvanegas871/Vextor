@@ -2,6 +2,20 @@ import { useState } from 'react';
 import { Bell } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+/**
+ * NotificationButton Component
+ *
+ * Responsabilidad:
+ * Mostrar alertas y notificaciones relevantes para el usuario.
+ *
+ * Utilizado en:
+ * * Navbar
+ *
+ * Funcionalidades:
+ * * Toggle de dropdown con animaciones de Framer Motion.
+ * * Indicador visual (badge) de nuevas notificaciones.
+ * * Lista de notificaciones recientes con categorías y tiempos.
+ */
 const NotificationButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasNotifications] = useState(true);

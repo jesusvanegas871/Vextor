@@ -1,6 +1,23 @@
 import React, { useId } from 'react';
 import { cn } from '../../utils/cn';
 
+/**
+ * Input Component
+ *
+ * Responsabilidad:
+ * Campo de texto estándar para recolección de datos con soporte para iconos y errores.
+ *
+ * Utilizado en:
+ * * Login page
+ * * Register page
+ * * Formularios generales
+ *
+ * Funcionalidades:
+ * * Soporte para iconos a la izquierda.
+ * * Soporte para elementos personalizados a la derecha (ej. toggle password).
+ * * Visualización de mensajes de error.
+ * * Estados focus con colores de marca.
+ */
 const Input = React.forwardRef(({ className, type, label, error, icon: Icon, rightElement, ...props }, ref) => {
   const id = useId();
   return (

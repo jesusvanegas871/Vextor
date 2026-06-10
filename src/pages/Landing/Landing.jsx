@@ -6,8 +6,18 @@ import CTASection from './components/CTASection';
 import LandingFooter from './components/LandingFooter';
 
 /**
- * Landing Page - Vextor Marketing Website
- * Designed to convert transport companies to the platform.
+ * Landing Page
+ *
+ * Responsabilidad:
+ * Página web de marketing (pública) para la conversión de empresas de transporte.
+ *
+ * Estructura:
+ * * LandingNavbar: Navegación global.
+ * * HeroSection: Propuesta de valor principal.
+ * * ProblemSection: Agitación de puntos de dolor.
+ * * FeaturesSection: Características y previsualización de UI.
+ * * CTASection: Llamada a la acción final.
+ * * LandingFooter: Información legal y enlaces adicionales.
  */
 const Landing = () => {
   return (

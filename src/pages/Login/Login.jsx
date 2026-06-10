@@ -16,9 +16,25 @@ import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import { Logo } from '../../components/ui/Logo';
 import { Checkbox } from '../../components/ui/Checkbox';
+import { useAuth } from '../../context/AuthContext';
 
+/**
+ * Login Page
+ *
+ * Responsabilidad:
+ * Proporcionar acceso seguro a los usuarios registrados.
+ *
+ * Funcionalidades:
+ * * Formulario de autenticación (Email/Password).
+ * * Validación de campos en tiempo real y al enviar.
+ * * Toggle para visualizar contraseña.
+ * * Persistencia opcional (Recordarme).
+ * * Diseño dividido (Split view) con branding en desktop.
+ * * Manejo de estados de carga (Loading) durante el login.
+ */
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -52,11 +68,14 @@ const Login = () => {
     setErrors({});
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      await login(formData.email, formData.password);
       navigate('/dashboard');
-    }, 1500);
+    } catch {
+      setErrors({ form: 'Error al iniciar sesión. Intente de nuevo.' });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e) => {

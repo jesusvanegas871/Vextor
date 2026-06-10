@@ -2,6 +2,20 @@ import { motion } from 'framer-motion';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
+/**
+ * StatsCard Component
+ *
+ * Responsabilidad:
+ * Mostrar indicadores clave de rendimiento (KPIs) con visualización de tendencias.
+ *
+ * Utilizado en:
+ * * Dashboard
+ *
+ * Funcionalidades:
+ * * Visualización de valores numéricos o estados.
+ * * Indicador de tendencia (arriba/abajo) con porcentajes.
+ * * Animaciones de entrada.
+ */
 const StatsCard = ({ title, value, icon: Icon, trend, trendValue, delay = 0 }) => {
   return (
     <motion.div

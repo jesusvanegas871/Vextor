@@ -3,6 +3,21 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/layout/Sidebar';
 import Navbar from '../components/layout/Navbar';
 
+/**
+ * DashboardLayout
+ *
+ * Propósito:
+ * Definir la estructura visual base para todas las páginas internas de la aplicación (privadas).
+ *
+ * Páginas que lo utilizan:
+ * * Dashboard
+ * * Vehicles, Drivers, Routes, Maintenance, etc.
+ *
+ * Estructura:
+ * * Renderiza un Sidebar fijo a la izquierda.
+ * * Renderiza un Navbar pegajoso en la parte superior.
+ * * Contiene un área de contenido principal donde se inyectan las páginas mediante <Outlet />.
+ */
 const DashboardLayout = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);

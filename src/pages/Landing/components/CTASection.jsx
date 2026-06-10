@@ -2,6 +2,18 @@ import { motion } from 'framer-motion';
 import { Rocket, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 
+/**
+ * CTASection Component
+ *
+ * Responsabilidad:
+ * Sección final de llamada a la acción (Call to Action) de la Landing Page.
+ *
+ * Funcionalidades:
+ * * Recordatorio final de la propuesta de valor.
+ * * Botones de conversión (Registro / Demo).
+ * * Eliminación de fricción (Mención de "Sin tarjeta de crédito", "Configuración rápida").
+ * * Diseño envolvente con orbes de luz y texturas sutiles.
+ */
 const CTASection = () => {
   return (
     <section className="py-24 bg-v-dark relative overflow-hidden">

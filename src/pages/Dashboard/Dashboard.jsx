@@ -3,6 +3,7 @@ import { Truck, MapPin, Calendar, Clock, ChevronRight, Users, Wrench } from 'luc
 import { cn } from '../../utils/cn';
 import StatsCard from '../../components/dashboard/StatsCard';
 import QuickActionCard from '../../components/dashboard/QuickActionCard';
+import { useAuth } from '../../context/AuthContext';
 
 const recentActivity = [
   { id: 1, type: 'route', title: 'Ruta Escolar Norte', user: 'Juan Pérez', status: 'Completada', time: 'hace 15 min', icon: MapPin, color: 'text-emerald-500', bg: 'bg-emerald-500/10' },
@@ -13,9 +14,19 @@ const recentActivity = [
 
 /**
  * Dashboard Page
- * Main view for fleet managers with overview metrics and recent activity.
+ *
+ * Responsabilidad:
+ * Vista principal de control operativo para gerentes de flota.
+ *
+ * Funcionalidades:
+ * * Visualización de métricas clave (Vehículos, Conductores, Rutas, Mantenimientos).
+ * * Registro de actividad reciente con estados codificados por colores.
+ * * Acceso rápido a las tareas más comunes del sistema.
+ * * Saludo personalizado y contexto temporal de la operación.
  */
 const Dashboard = () => {
+  const { user } = useAuth();
+
   return (
     <div className="space-y-8 animate-in fade-in duration-700">
       {/* Header Section */}
@@ -27,7 +38,7 @@ const Dashboard = () => {
             animate={{ opacity: 1, x: 0 }}
             className="text-3xl font-bold text-v-white mb-2"
           >
-            Bienvenido a Vextor, Admin
+            Bienvenido a Vextor, {user?.name?.split(' ')[0] || 'Admin'}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, x: -20 }}

@@ -2,7 +2,24 @@ import { Search, Menu } from 'lucide-react';
 import UserMenu from './UserMenu';
 import NotificationButton from './NotificationButton';
 import { useLocation } from 'react-router-dom';
+import { Logo } from '../ui/Logo';
 
+/**
+ * Navbar Component
+ *
+ * Responsabilidad:
+ * Mostrar la navegación superior y controles globales del panel de control.
+ *
+ * Utilizado en:
+ * * DashboardLayout
+ *
+ * Funcionalidades:
+ * * Branding de la plataforma (Logo) visible en móviles.
+ * * Título dinámico basado en la ruta actual.
+ * * Buscador global (placeholder).
+ * * Notificaciones y Menú de Usuario.
+ * * Botón de menú hamburguesa para móviles.
+ */
 const Navbar = ({ onMenuClick }) => {
   const location = useLocation();
 
@@ -30,6 +47,17 @@ const Navbar = ({ onMenuClick }) => {
           >
             <Menu size={20} />
           </button>
+
+          <div className="lg:hidden">
+            <Logo variant="iso" size="sm" />
+          </div>
+
+          <div className="hidden lg:block">
+            <Logo size="sm" />
+          </div>
+
+          <div className="hidden lg:block w-px h-6 bg-v-dark-border mx-2" />
+
           <h1 className="text-xl font-bold text-v-white hidden sm:block">
             {getPageTitle()}
           </h1>

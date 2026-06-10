@@ -2,6 +2,25 @@ import React from 'react';
 import { cn } from '../../utils/cn';
 import { Loader2 } from 'lucide-react';
 
+/**
+ * Button Component
+ *
+ * Responsabilidad:
+ * Proporcionar un elemento de acción interactivo con múltiples variantes visuales y estados.
+ *
+ * Utilizado en:
+ * * LandingNavbar
+ * * HeroSection
+ * * CTASection
+ * * Login / Register pages
+ * * Sidebar
+ *
+ * Funcionalidades:
+ * * Variantes: primary, outline, ghost, link.
+ * * Tamaños: default, sm, lg, icon.
+ * * Estado de carga (Loading) con spinner.
+ * * Micro-interacción de escalado al hacer click.
+ */
 const Button = React.forwardRef(({ className, variant = 'primary', size = 'default', isLoading, children, disabled, ...props }, ref) => {
   const variants = {
     primary: 'bg-primary text-v-dark hover:bg-primary-hover shadow-[0_0_15px_rgba(0,209,102,0.3)]',
