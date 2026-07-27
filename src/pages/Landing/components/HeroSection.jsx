@@ -65,16 +65,7 @@ const HeroSection = () => {
               </Button>
             </div>
 
-            <div className="mt-12 flex items-center gap-6 text-v-gray/60 text-sm">
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map(i => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-v-dark bg-v-dark-soft flex items-center justify-center overflow-hidden">
-                    <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="User" />
-                  </div>
-                ))}
-              </div>
-              <p>Confianza de +500 empresas de transporte</p>
-            </div>
+            
           </motion.div>
 
           <motion.div
