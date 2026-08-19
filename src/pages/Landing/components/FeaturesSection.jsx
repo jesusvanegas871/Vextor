@@ -132,7 +132,7 @@ const FeaturesSection = () => {
                 Interfaz diseñada para la <span className="text-primary">productividad.</span>
               </h3>
               <p className="text-v-gray text-lg mb-8 leading-relaxed">
-                No pierda tiempo buscando información. Nuestra interfaz estilo "SaaS Premium" permite acceder a cualquier dato en menos de 3 clics.
+                No pierda tiempo buscando información. Nuestra interfaz estilo &quot;SaaS Premium&quot; permite acceder a cualquier dato en menos de 3 clics.
               </p>
               <ul className="space-y-4">
                 {[
